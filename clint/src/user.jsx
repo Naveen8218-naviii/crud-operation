@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom'
 
 const User = () => {
     const [users,setUsers] = useState([{
-Name:"naveen" , Email:"nc319631" , Age:25
+
+id:1 , Name:"naveen" , Email:"nc319631" , Age:25
     }])
 
   return (
     <div className=' h-screen bg-blue-400 flex justify-center items-center flex-col'>
        <Link to="/create"><button className='bg-green-600 '>Add+</button></Link> 
-            <table className=''>
+            <table className='w-full text-center border"'>
                 
                 <thead className='bg-green-700 p-2 '>
-                    <tr className='flex justify-center gap-20'>
+                    <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Age</th>
@@ -22,7 +23,8 @@ Name:"naveen" , Email:"nc319631" , Age:25
                 </thead>
                 <tbody className='bg-green-400 h-10  '> 
                             { users.map((user)=>{
-                            return<tr className='flex justify-center gap-20'> <td> {user.Name}</td>
+                            return<tr key={user.id}> 
+                            <td> {user.Name}</td>
                              <td> {user.Email}</td>
                              <td> {user.Age}</td>
                              <td>
