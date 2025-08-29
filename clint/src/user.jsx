@@ -1,12 +1,17 @@
+import axios from 'axios'
 import React ,{useState}from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
  
 
 const User = () => {
-    const [users,setUsers] = useState([{
+    const [users,setUsers] = useState([])
 
-id:1 , Name:"naveen" , Email:"nc319631" , Age:25
-    }])
+    useEffect(()=>{axios.get("http://localhost:4000/")
+        .then(result=>setUsers(result.data))
+        .catch(err=>console.log(err))
+    },[])
+
 
   return (
     <div className=' h-screen bg-blue-400 flex justify-center items-center flex-col'>
@@ -24,9 +29,9 @@ id:1 , Name:"naveen" , Email:"nc319631" , Age:25
                 <tbody className='bg-green-400 h-10  '> 
                             { users.map((user)=>{
                             return<tr key={user.id}> 
-                            <td> {user.Name}</td>
-                             <td> {user.Email}</td>
-                             <td> {user.Age}</td>
+                            <td> {user.name}</td>
+                             <td> {user.email}</td>
+                             <td> {user.age}</td>
                              <td>
                                  <Link to="/update"><button className='bg-red-600 '>Update</button></Link> 
                               <button className='bg-blue-600'>Delet</button></td>
