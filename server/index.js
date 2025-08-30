@@ -23,6 +23,19 @@ usermodel.create(req.body)
 .catch(err=>res.json(err))
 })
 
+app.get("getuser/:id",(req,res)=>{
+  const id=req.params.id;
+  usermodel.findById({_id})
+  .then(users=>res.json(users))
+.catch(err=>res.json(err))
+})
+
+app.put("updateuser/:id",(req,res)=>{
+  const id=req.params.id;
+  usermodel.findByIdAndUpdate({_id: id} ,{name:req.body.name,
+    email:req.body.email,
+    age:req.body.age})
+})
 app.listen(4000,()=>{
     console.log("app listening")
 })

@@ -1,11 +1,18 @@
 import React,{useState} from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 const Createuser = () => {
 
 const[name,setName]=useState("");
 const[email,setEmail]=useState("");
 const[age,setAge]=useState("");
+const navigate=useNavigate()
+
+ useEffect(()=>{axios.get("http://localhost:4000/getuser"+id)
+        .then(result=>setUsers(result.data))
+        .catch(err=>console.log(err))
+    },[])
 
 const submit=(e)=>{
 e.preventDefault()
