@@ -38,6 +38,13 @@ app.put("/updateuser/:id",(req,res)=>{
      .then(users=>res.json(users))
 .catch(err=>res.json(err))
 })
+
+app.delete("/deleteuser/:id",(req,res)=>{
+  const id=req.params.id;
+  usermodel.findByIdAndDelete({_id:id})
+    .then(users=>res.json(res))
+.catch(err=>res.json(err))
+})
 app.listen(4000,()=>{
     console.log("app listening")
 })
